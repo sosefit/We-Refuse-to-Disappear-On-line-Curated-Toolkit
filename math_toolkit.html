@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathematics Spotlight Toolkit</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:#f7f6f3;color:#1c1c1a;min-height:100vh}
+.hdr{background:#2171c7;padding:2rem 2.5rem 0}
+.hdr-eyebrow{font-family:'Courier New',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#fff;margin-bottom:.4rem}
+.hdr h1{font-family:Georgia,serif;font-size:26px;font-weight:600;color:#fff}
+.subject-nav{display:flex;gap:0;background:#1a5fa8;border-top:1px solid #144d8a;border-bottom:1px solid #144d8a;overflow-x:auto}
+.snav-btn{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:9px 18px;background:transparent;border:none;border-right:1px solid #144d8a;color:rgba(255,255,255,.65);cursor:pointer;transition:all .15s;white-space:nowrap;text-decoration:none;display:inline-block;line-height:1}
+.snav-btn:last-child{border-right:none}
+.snav-btn:hover{background:#144d8a;color:#fff}
+.snav-btn.active{color:#fff;background:#0e3d70;font-weight:700}
+.grade-tabs{display:flex;gap:0;border-top:1px solid #e8799e;margin-top:.5rem}
+.gtab{font-family:'Courier New',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;background:transparent;border:none;border-right:1px solid #2a5a8a;color:#fff;cursor:pointer;transition:all .15s;position:relative;white-space:nowrap}
+.gtab:last-child{border-right:none}
+.gtab:hover{background:#d4537e}
+.gtab.active{color:#4B1528;background:#e8799e}
+.gtab.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#4B1528}
+.layout{display:flex;min-height:calc(100vh - 140px)}
+.sidebar{width:210px;flex-shrink:0;background:#fff;border-right:1px solid #e5e3de;padding:1.5rem 0;position:sticky;top:0;height:calc(100vh - 140px);overflow-y:auto}
+.sb-label{font-family:'Courier New',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#aaa;padding:0 1.25rem;margin-bottom:.6rem;display:block}
+.sb-btn{display:block;width:100%;text-align:left;padding:7px 1.25rem 7px 1rem;font-size:12px;color:#666;background:transparent;border:none;border-left:3px solid transparent;cursor:pointer;line-height:1.4;transition:all .12s}
+.sb-btn:hover{background:#f7f6f3;color:#1c1c1a;border-left-color:#ccc}
+.sb-btn.active{color:#4B1528;font-weight:500;background:#e8799e;border-left-color:#e8799e}
+.sb-all{margin-top:1rem;font-style:italic;font-size:11px;color:#aaa}
+.content{flex:1;padding:2rem 2.5rem 3rem;max-width:900px}
+.content-hdr{margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #e5e3de}
+.content-hdr h2{font-family:Georgia,serif;font-size:20px;font-weight:600;color:#1c1c1a;margin-bottom:3px}
+.content-hdr p{font-size:12px;color:#999}
+.cat-block{margin-bottom:2.25rem}
+.cat-title{font-family:'Courier New',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#999;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid #ece9e3}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.card{background:#fff;border:1px solid #e5e3de;border-top:3px solid #378ADD;border-radius:0 0 8px 8px;padding:14px 16px;display:flex;flex-direction:column;gap:5px}
+.card:hover{border-color:#c8dff5;box-shadow:0 2px 10px rgba(55,138,221,.08)}
+.card-type{font-family:'Courier New',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#378ADD}
+.card-name{font-family:Georgia,serif;font-size:13px;font-weight:600;line-height:1.45;color:#0D1B2A}
+.card-meta{font-size:11.5px;color:#888;font-style:italic;line-height:1.4}
+.card-desc{font-size:12px;color:#555;line-height:1.6;flex:1}
+.card-link{font-family:'Courier New',monospace;font-size:10px;font-weight:700;color:#185FA5;text-decoration:none;margin-top:5px;display:inline-flex;align-items:center;gap:3px}
+.card-link:hover{color:#0C447C;text-decoration:underline}
+footer{background:#0D1B2A;padding:1.5rem 2.5rem}
+footer p{font-family:'Courier New',monospace;font-size:11px;color:#4a6a8a;letter-spacing:.05em}
+@media(max-width:680px){.sidebar{display:none}.hdr{padding:1.25rem 1rem 0}.content{padding:1.25rem 1rem 2rem}.grade-tabs{overflow-x:auto}.gtab{padding:10px 14px}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-eyebrow">Spotlight Toolkit</div>
+  <h1>Mathematics</h1>
+  <div class="subject-nav">
+    <a class="snav-btn" href="https://sosefit.github.io/We-Refuse-to-Disappear-On-line-Curated-Toolkit/" style="border-right:2px solid #0e3d70;margin-right:4px">⌂ Home</a>
+    <a class="snav-btn active" href="math_toolkit.html">Mathematics</a>
+    <a class="snav-btn" href="english_toolkit.html">English</a>
+    <a class="snav-btn" href="social_studies_toolkit.html">Social Studies</a>
+    <a class="snav-btn" href="science_toolkit.html">Science</a>
+    <a class="snav-btn" href="arts_toolkit.html">Arts</a>
+    <a class="snav-btn" href="health_toolkit.html">Health &amp; PE</a>
+    <a class="snav-btn" href="world_languages_toolkit.html">World Languages</a>
+  </div>
+  <div class="grade-tabs">
+    <button class="gtab active" data-g="cross">Cross-band</button>
+    <button class="gtab" data-g="elem">Elementary</button>
+    <button class="gtab" data-g="middle">Middle School</button>
+    <button class="gtab" data-g="high">High School</button>
+    <button class="gtab" data-g="post">Postsecondary</button>
+    <button class="gtab" data-g="sped">Special Education</button>
+  </div>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar"></nav>
+  <div class="content" id="content"></div>
+</div>
+<footer>
+  <p>© 2026 sj Miller / Harvard Education Press. All rights reserved. Unauthorized reproduction or distribution of this material, or any portion thereof, is strictly prohibited.</p>
+</footer>
+<script>
+const CATS=["Recommended Readings","News Articles & Substacks","Policy Reports","Policy Trackers","Political & Social Organizations","Podcasts & Webinars","Open-Access Curricula & OER Repositories","Activist Groups & Campaigns","Films, Documentaries & Visual Media"];
+const DATA={
+cross:{label:"Cross-band Resources",count:"27 resources · 9 categories",
+"Recommended Readings":[
+{type:"Journal Article",name:"Exploring Queer and Trans Students' Mathematics Identity",meta:"M. I. Suárez, L. A. Leyva, L. E. Rivera · AERA Open, 2024",desc:"A quantitative study using national high school data, showing how queer and trans students' math identities are shaped by cis-heteropatriarchal norms in STEM spaces."},
+{type:"Journal Article",name:"Mathematics Motivation and Sense of Belonging among Transgender and Nonbinary College Students",meta:"K. G. I. Brown · Studies in Educational Evaluation, 2025",desc:"Examines the belonging, participation, and motivation of transgender and nonbinary college students in mathematics, highlighting barriers and the need for affirming pedagogies."},
+{type:"White Paper",name:"A Queer Turn in Mathematics Education Research: Centering the Experience of Marginalized Queer Students",meta:"C. Dubbs, 2021",desc:"Critiques the erasure of queer identities in math education research and practice, calling for scholarship and teaching that center the lived experiences of queer learners."}],
+"News Articles & Substacks":[
+{type:"Webinar & Resource List",name:"LGBTQIA+ Math Resources: What Does 2SLGBTQIA+ Identity Have To Do With Mathematics Teaching & Learning?",meta:"SABES & TODOS, 2023",desc:"A curated collection of news articles, narratives, and a webinar examining the intersections of LGBTQIA+ identity and math learning, with stories from teachers and students across K-12 and adult education."},
+{type:"Blog Article",name:"How Do We Make Math Class More Inclusive of Trans and Non-Binary Identities",meta:"GLSEN, 2022",desc:"Practical article with concrete steps for teachers to affirm and support trans and non-binary students in mathematics classrooms and school math culture.",url:"https://glsen.org"},
+{type:"Journal Article",name:"Supporting LGBTQ+ Students in K-12 Mathematics",meta:"B. E. Waid · Mathematics Teacher: Learning and Teaching PK-12, 113(11), 874-877, 2020",desc:"Offers strategies and classroom examples for making K-12 math instruction more inclusive, safe, and affirming for LGBTQ+ students."}],
+"Policy Reports":[
+{type:"National Survey",name:"The 2021 National School Climate Survey: The Experiences of LGBTQ+ Youth in Our Nation's Schools",meta:"Joseph G. Kosciw, Caitlin M. Clark, Leesh Menard · GLSEN, 2022",desc:"A comprehensive national report documenting the experiences of LGBTQ+ students, including the impact of school policies, curriculum, and school climate on safety, identity, and academic engagement.",url:"https://glsen.org"},
+{type:"Policy Brief",name:"Inclusive Curriculum Standards",meta:"GLSEN, 2023",desc:"A policy analysis and advocacy brief summarizing current state laws and standards that mandate or encourage LGBTQIA+ and multicultural inclusion in curriculum across U.S. public schools.",url:"https://glsen.org"},
+{type:"Peer-Reviewed Research",name:"Promoting School Safety for LGBTQ and All Students",meta:"S. T. Russell, et al. · PLoS One, 2021",desc:"Peer-reviewed research demonstrating that the absence of LGBTQIA+ representation in school curricula correlates with lower perceptions of safety and belonging."}],
+"Policy Trackers":[
+{type:"Interactive Tracker",name:"LGBTQ Curricular Laws: Equality Maps",meta:"Movement Advancement Project, 2024",desc:"An interactive tracker monitoring U.S. state laws and policies governing the inclusion or exclusion of LGBTQIA+ topics in school curricula, with filters for grade level and subject.",url:"https://lgbtmap.org"},
+{type:"Live Map & Database",name:"Inclusive Curricular Standards Policies",meta:"GLSEN, 2024",desc:"A live map and database of states that have enacted, proposed, or are considering policies for LGBTQIA+ and multicultural curricular inclusion, including STEM and mathematics education.",url:"https://glsen.org"},
+{type:"Legislation Tracker",name:"Education Legislation Tracker",meta:"Education Commission of the States, 2024",desc:"Tracks new and pending state and federal education legislation impacting curriculum, with detailed entries on bills relating to equity, LGBTQIA+ rights, race, gender, and language.",url:"https://ecs.org"}],
+"Political & Social Organizations":[
+{type:"Professional Society",name:"Out in Science, Technology, Engineering, and Mathematics (oSTEM, Inc.)",desc:"A U.S.-based professional society with over 100 collegiate and professional chapters focused on advocating for LGBTQ+ individuals in STEM, including mathematics.",url:"https://ostem.org"},
+{type:"Professional Association",name:"Spectra: the Association for LGBT Mathematicians",desc:"A professional association of LGBTQIA+ mathematicians that organizes conferences, panels, and workshops, and supports student chapters and visibility for queer and trans mathematicians.",url:"https://spectra-math.org"},
+{type:"Outreach Program",name:"Mathematical Association of America - Camp of Mathematical Queeries (CMQ)",desc:"An outreach program for high school students that combines mathematical exploration with affirmation of LGBTQ+ identity through a virtual/summer camp structure.",url:"https://maa.org"}],
+"Podcasts & Webinars":[
+{type:"Podcast Episode",name:"Kyle Whipple: LGBTQ+ Inclusion in Mathematics Education",meta:"Teaching Math, Teaching Podcast, 2021",desc:"Episode featuring Kyle Whipple discussing various forms of LGBTQ+ inclusion in mathematics education, including curriculum examples and classroom culture shifts."},
+{type:"Podcast Episode",name:"Queer of Color Justice in STEM with Luis Leyva",meta:"Math Ed Podcast, 2024",desc:"Luis Leyva discusses how undergraduate mathematics environments can better support queer students of color through inclusive pedagogy, curriculum, and belonging."},
+{type:"Podcast Episode",name:"S4E10: Queering Math with Dr. Anthony Bonato",meta:"Math Therapy Podcast, 2022",desc:"A conversation with a mathematics professor about what it means to be queer in mathematical spaces, the barriers encountered, and strategies for fostering affirmation and inclusion."}],
+"Open-Access Curricula & OER Repositories":[
+{type:"OER Repository",name:"LGBTQIA+ Math Resources - SABES Mathematics and Adult Numeracy Curriculum",desc:"A curated repository providing lesson plans, classroom activities, and open-access webinars explicitly designed to support LGBTQIA+ inclusion and identity-affirmation in mathematics education."},
+{type:"OER Curriculum",name:"Illustrative Mathematics - Equity and Access Materials",desc:"An open-access curriculum series with supplemental equity-focused guides and lesson plans to support culturally relevant, linguistically sustaining, and LGBTQIA+-inclusive math teaching practices.",url:"https://illustrativemathematics.org"},
+{type:"OER Platform",name:"YouCubed - Equity & Inclusion Tasks",meta:"Stanford University",desc:"Hundreds of open, inquiry-based math tasks and activities that promote creativity, growth mindset, and multicultural classroom inclusion, with guidance for addressing diverse gender and family structures.",url:"https://youcubed.org"}],
+"Activist Groups & Campaigns":[
+{type:"National Network",name:"Spectra: The Association for LGBTQ+ Mathematicians",desc:"A national network and advocacy group supporting LGBTQIA+ mathematicians and students, promoting visibility, networking, mentoring, and inclusion within mathematics education and research.",url:"https://spectra-math.org"},
+{type:"Nationwide Organization",name:"oSTEM (Out in Science, Technology, Engineering, and Mathematics)",desc:"A nationwide organization dedicated to empowering LGBTQ+ people in STEM, providing resources, leadership training, and community for students and professionals.",url:"https://ostem.org"},
+{type:"Educator Initiative",name:"Radical Math",desc:"An educator-founded initiative with tools, lesson plans, and advocacy for teaching math for social and racial justice, supporting intersectional approaches to equity and LGBTQIA+ inclusion.",url:"https://radicalmath.org"}],
+"Films, Documentaries & Visual Media":[
+{type:"Short Film",name:"Algebra: In Our Own Words",meta:"GLSEN, 2022",desc:"A short film featuring LGBTQIA+ youth sharing experiences of inclusion and exclusion in mathematics classrooms, with teacher guides for facilitating discussion.",url:"https://glsen.org"},
+{type:"Documentary",name:"The Color of Math",meta:"PBS, 2021",desc:"A documentary exploring racial and cultural identity in math education, with segments and lesson materials adaptable for intersectional and LGBTQIA+ inclusion."},
+{type:"Short Video & Lesson Resource",name:"Welcoming Schools: 'What is a Family?'",meta:"Human Rights Campaign Foundation, 2018",desc:"Short video and K-5 lesson resource affirming all family types including LGBTQ+ for use in math activities like sorting, graphing, and data collection.",url:"https://welcomingschools.org"}]},
+
+elem:{label:"Elementary",count:"5 resources · 4 categories",
+"Recommended Readings":[
+{type:"Journal Article",name:"Teaching Mathematics for Social Justice: Examining Preservice Teachers' Conceptions",meta:"Cindy Jong & Christa Jackson · Journal of Mathematics Education at Teachers College, 7(1), 33-40, 2016",desc:"A research study on elementary (K-6) preservice teachers' development of equity-focused and social justice mathematics instruction."},
+{type:"Journal Article",name:"The Food Drive Task: Problem Solving for Social Justice in the Elementary Grades",meta:"Montana Smithey & Alesia M. Moldavan · Ohio Journal of School Mathematics, 89, 15-20, 2023",desc:"Standards-based math lesson rooted in food insecurity and equity, directly modeled for K-2 but adaptable for K-6 settings seeking justice-centered approaches."}],
+"News Articles & Substacks":[
+{type:"News Article",name:"Anti-CRT Bills Leave Teachers Scrambling to Update History, Reading, and Math Lessons",meta:"Sarah Schwartz · Education Week, August 11, 2022",desc:"Focuses on the chilling effect of anti-CRT policy on justice- and equity-oriented math instruction in K-6 schools.",url:"https://edweek.org"}],
+"Political & Social Organizations":[
+{type:"Urban School Coalition · Est. 1956",name:"Council of the Great City Schools",desc:"Urban school coalition supporting research, best practice, and equity in K-6 mathematics.",url:"https://cgcs.org"}],
+"Films, Documentaries & Visual Media":[
+{type:"Animated Film · 2019",name:"Zero to Infinity",meta:"Directed by Cristobal Vila",desc:"Animated math film that is a model for multicultural and global representation and can be combined with affirming math stories."}]},
+
+middle:{label:"Middle School",count:"14 resources · 8 categories",
+"Recommended Readings":[
+{type:"Journal Article",name:"Equity Means All",meta:"Patricia F. Campbell · Mathematics Teaching in the Middle School, 18(7), 438-441, 2012",desc:"Offers concrete strategies for fostering equitable participation and access in middle grades math."},
+{type:"Journal Article",name:"Mathematics Learning and Participation as Racialized Forms of Experience",meta:"Danny Bernard Martin · Educational Studies in Mathematics, 84(1), 61-82, 2013",desc:"Explores how race and identity shape engagement and opportunities in middle school mathematics."}],
+"Policy Reports":[
+{type:"Policy Guide",name:"Welcoming Schools: A Guide for Creating LGBTQ+ Inclusive Schools",meta:"Human Rights Campaign Foundation, Washington, DC, 2021",desc:"Provides actionable steps for creating affirming environments in classrooms, with applicability to mathematics teaching.",url:"https://welcomingschools.org"},
+{type:"Policy Statement",name:"Resolution on Gender and Sexual Orientation Diversity in K-12 Schools",meta:"American Psychological Association, Washington, DC, 2021",desc:"Synthesizes research and policy recommendations for supporting LGBTQIA+ students in all subject areas, including mathematics.",url:"https://apa.org"}],
+"Policy Trackers":[
+{type:"Live Tracker",name:"Tracking Anti-LGBTQ Legislation",meta:"GLAAD, 2025",desc:"Monitors proposed and enacted laws targeting LGBTQIA+ inclusion in public education.",url:"https://glaad.org"},
+{type:"Annual Report",name:"State Equality Index: Education Policy Section",meta:"Human Rights Campaign, 2025",desc:"Annual summary of state education laws related to LGBTQIA+ student rights and curricular inclusion.",url:"https://hrc.org"}],
+"Political & Social Organizations":[
+{type:"Student-Led Nonprofit · Est. 2011",name:"Trans Student Educational Resources (TSER)",desc:"Student-led nonprofit promoting gender-inclusive education through advocacy, resources, and training.",url:"https://transstudent.org"},
+{type:"Legal Advocacy · Est. 1973",name:"Lambda Legal",desc:"Legal advocacy organization supporting the rights of LGBTQIA+ students and educators nationwide.",url:"https://lambdalegal.org"}],
+"Podcasts & Webinars":[
+{type:"Podcast Episode",name:"Dismantling Oppression in Math Classrooms",meta:"EduColor Podcast, Jose Vilson, May 19, 2024",desc:"Conversation with educators on liberatory math pedagogy and intersectional justice."},
+{type:"Webinar",name:"Math, Identity, and Belonging in the Middle Grades",meta:"YouCubed Webinar, Jo Boaler, March 14, 2023",desc:"Explores strategies for affirming diverse identities and fostering belonging through math.",url:"https://youcubed.org"}],
+"Open-Access Curricula & OER Repositories":[
+{type:"OER Curriculum",name:"6-8 Math Curriculum",meta:"Open Up Resources, 2022",desc:"OER curriculum emphasizing universal design, cultural responsiveness, and collaborative problem-solving.",url:"https://openupresources.org"},
+{type:"Free Digital Textbooks",name:"Middle School Math FlexBooks",meta:"CK-12 Foundation, 2024",desc:"Free, adaptive digital textbooks supporting differentiated learning in mathematics.",url:"https://ck12.org"}],
+"Activist Groups & Campaigns":[
+{type:"Advocacy Campaign · 2015-present",name:"National Queer Asian Pacific Islander Alliance (NQAPIA) - Education Equity Campaign",desc:"Intersectional advocacy for LGBTQIA+ and BIPOC students in all subject areas, including math.",url:"https://nqapia.org"},
+{type:"Campaign · 2019-present",name:"Gender Spectrum, Inclusive Schools Network",desc:"Campaign supporting schools in creating gender-inclusive and equitable learning environments.",url:"https://genderspectrum.org"}],
+"Films, Documentaries & Visual Media":[
+{type:"Documentary",name:"Picture a Scientist",meta:"Directed by Sharon Shattuck & Ian Cheney · NOVA/PBS, 2020",desc:"Profiles women and nonbinary scientists, with classroom teaching scenes relevant for middle grades."},
+{type:"Film",name:"Mathematically Alive: A Story of Fandom",meta:"Produced by Vitamin Enriched Inc., 2007",desc:"Uses sports and statistics to engage diverse learners in middle school mathematics."}]},
+
+high:{label:"High School",count:"20 resources · 8 categories",
+"Recommended Readings":[
+{type:"Journal Article",name:"Access to Mathematics: 'A Moral Imperative' for Achieving Equity",meta:"Robert Q. Berry III · Mathematics Teacher, 110(5), 353-359, 2017",desc:"Frames access and equity in secondary math as a justice issue, emphasizing action for all marginalized students."},
+{type:"Journal Article",name:"Mathematics for Human Flourishing: A Framework for Equity",meta:"Darryl Yong & Federico Ardila-Mantilla · Notices of the American Mathematical Society, 67(2), 175-181, 2020",desc:"Connects equity work in high school math to human flourishing, offering practical frameworks for liberatory teaching."},
+{type:"Book",name:"Data Feminism",meta:"Catherine D'Ignazio & Lauren F. Klein · MIT Press, 2020",desc:"Introduces an intersectional approach to teaching data and statistics, relevant to modern high school math curricula and equity work."}],
+"News Articles & Substacks":[
+{type:"News Article",name:"Outreach Events Engage Queer and Transgender Youth in STEM",meta:"Kimberly M. S. Cartier · Eos, December 10, 2018",desc:"Reports on a Queer Science program connecting queer and trans scientists with LGBTQ high school students for hands-on math and science workshops."},
+{type:"Profile",name:"Math teacher Ethan Somes discusses how their experiences as a trans person impacts their presence in the classroom",meta:"Clara McKoy · The Rubicon, August 30, 2021",desc:"Profile of a transgender high school math teacher who uses his experience to confront gender bias and serve as a visible LGBTQ+ role model."},
+{type:"News Article",name:"The Professional Educator: How I Support LGBTQ+ Students at My School",meta:"Taica Hsu · American Educator, Winter 2016-2017",desc:"A veteran math teacher illustrates active support for LGBTQ+ students through GSA advising, events, and interventions in the high school setting."},
+{type:"News Article",name:"Teacher fights Florida anti-LGBTQ+ law, says state can't deny my existence",meta:"Rhonda Sonnenberg · Southern Poverty Law Center, June 28, 2024",desc:"Features a transgender high school math teacher in Florida who is challenging a law restricting her gender identity at work.",url:"https://splcenter.org"},
+{type:"News Article",name:"As a trans male teacher, I am uniquely poised to teach boys to respect women",meta:"Chris Zsilavetz · LGBTQ Nation, July 23, 2025",desc:"A transgender math teacher discusses how his lived experience helps model respectful behavior and inclusivity in his high school math classes.",url:"https://lgbtqnation.com"}],
+"Policy Reports":[
+{type:"Policy Report",name:"Under Fire: Erasing LGBTQ People from Schools and Public Life",meta:"Movement Advancement Project · Boulder, CO: MAP, 2023",desc:"Documents the spread of anti-inclusion campaigns and school censorship laws that silence LGBTQ+ representation in subjects like math.",url:"https://lgbtmap.org"},
+{type:"Policy Analysis",name:"Policy Spotlight: Curriculum Censorship & Hostile School Climate Bills",meta:"Movement Advancement Project & Equality Federation · Boulder, CO: MAP, 2022",desc:"Analyzes recent surges in state bills that ban LGBTQ+ topics and supports, impacting math teachers' ability to foster inclusive classrooms.",url:"https://lgbtmap.org"}],
+"Policy Trackers":[
+{type:"Legislation Tracker",name:"State Legislation Tracker",meta:"Equality Federation, 2025",desc:"Updated tracker of state-level pro- and anti-LGBTQ+ bills introduced each session, including those targeting educational content.",url:"https://equalityfederation.org"},
+{type:"Bill Tracker",name:"2024 Legislative Tracker: All Anti-LGBTQ Bills",meta:"Freedom for All Americans, 2024",desc:"Monitors every anti-LGBTQ+ bill in U.S. legislatures with a focus on education, including math/STEM classrooms.",url:"https://freedomforallamericans.org"}],
+"Political & Social Organizations":[
+{type:"Educator Union Initiative",name:"National Education Association - Supporting LGBTQ+ Youth",desc:"Educator union initiative emphasizing the vital role of affirming teachers and safe school climates in academic achievement for LGBTQ+ students.",url:"https://nea.org"},
+{type:"Leader Support Network",name:"National Association of Secondary School Principals (NASSP) - LGBTQ+ School Leaders Network",desc:"Supports secondary leaders in building policies, toolkits, and community for inclusive schools, empowering math teachers and students alike.",url:"https://nassp.org"}],
+"Podcasts & Webinars":[
+{type:"Podcast · 2021-present",name:"Pride in STEM Podcast",meta:"Hosted by Dr. Craig Poku",desc:"Explores intersectional issues like race and disability for LGBTQ+ scientists and mathematicians.",url:"https://prideinstem.org"},
+{type:"Ongoing Webinar Series",name:"GLSEN Educator Webinar Series",meta:"GLSEN",desc:"Monthly webinars on best practices, inclusive pedagogy, and policies for supporting LGBTQ+ youth in high school math and STEM.",url:"https://glsen.org"}],
+"Open-Access Curricula & OER Repositories":[
+{type:"OER Guide",name:"Creating an LGBT-Inclusive Secondary Curriculum",meta:"Stonewall · London, 2023",desc:"A practical guide for UK schools, with strategies for integrating LGBTQ+ topics and data into math and science classes.",url:"https://stonewall.org.uk"},
+{type:"Toolkit",name:"GLSEN Safe Space Kit",meta:"GLSEN, 2011",desc:"Toolkit with activities, posters, and guidance for creating visibly affirming classrooms for LGBTQ+ students.",url:"https://glsen.org"}],
+"Activist Groups & Campaigns":[
+{type:"State Coalition",name:"Equality Federation",desc:"Coalition of state-based LGBTQ+ advocacy groups working to advance rights and protections including education and curriculum policy.",url:"https://equalityfederation.org"},
+{type:"UK Rights Charity",name:"Stonewall",desc:"UK's leading LGBTQ+ rights charity, running national campaigns and producing educational resources for inclusion across school subjects.",url:"https://stonewall.org.uk"}],
+"Films, Documentaries & Visual Media":[
+{type:"YouTube Video",name:"Gender, Genius and the Myth of Meritocracy: Eugenia Cheng",meta:"Numberphile, 2018",desc:"Mathematician Eugenia Cheng discusses intersectionality, gender, and diversity in the math world, providing valuable insights for math educators supporting queer students.",url:"https://youtube.com"},
+{type:"Short Documentary",name:"LGBTQ+ People in STEM",meta:"American Association for the Advancement of Science (AAAS), 2021",desc:"Short documentary profiles scientists and mathematicians, including high school students and teachers, working to create inclusive environments in STEM.",url:"https://aaas.org"}]},
+
+post:{label:"Postsecondary",count:"24 resources · 8 categories",
+"Recommended Readings":[
+{type:"Journal Article",name:"Black Queer Students' Counter-Stories of Invisibility in Undergraduate STEM as a White, Cisheteropatriarchal Space",meta:"L. A. Leyva, R. R. McNeill & D. B. Martin · American Educational Research Journal, 59(5), 863-904, 2022",desc:"Documents the intersectional oppression faced by Black queer undergraduates in STEM and math, and strategies for resistance."},
+{type:"Literature Review",name:"Queer Identity and Theory Intersections in Mathematics Education: A Theoretical Literature Review",meta:"A. S. Moore · Mathematics Education Research Journal, 33(4), 651-687, 2021",desc:"A review of queer theory in math education and implications for postsecondary teaching."},
+{type:"Book Chapter",name:"Queering Mathematics: Disrupting Binary Oppositions in Mathematics Pre-Service Teacher Education",meta:"C. Yeh & L. Rubel · In Borders in Mathematics Pre-Service Teacher Education, Springer, 2020",desc:"Book chapter guiding future math teachers in queering binaries in math pedagogy."}],
+"News Articles & Substacks":[
+{type:"News Article",name:"STEM's LGBTQ+ Scientists Want to Be Seen and Heard",meta:"Catherine Offord · The Scientist, June 1, 2022",desc:"Profiles LGBTQ+ scientists including mathematicians pushing for greater visibility and inclusion in STEM education."},
+{type:"News Article",name:"How Colleges Are Trying to Make STEM More Welcoming for LGBTQ Students",meta:"Jeremy Bauer-Wolf · Higher Ed Dive, June 21, 2023",desc:"Details department and campus-level reforms for safer, more inclusive environments for LGBTQ+ students, with examples from math programs.",url:"https://highereddive.com"},
+{type:"News Article",name:"States Are Banning LGBTQ+ Subjects in Schools. Most Students Say They Were Never Taught About Them Anyway.",meta:"Adam Polaski · The 19th, August 17, 2023",desc:"Explores the effects of LGBTQ+ curricular erasure from K-12 to college, with impacts on math/STEM disciplines.",url:"https://19thnews.org"},
+{type:"News Article",name:"LGBTQ Students in STEM Fields Face Ongoing Barriers",meta:"Emanuella Grinberg · CNN, June 28, 2022",desc:"Covers research and stories of LGBTQ+ students in STEM, including unique challenges in mathematics at the college level.",url:"https://cnn.com"}],
+"Policy Reports":[
+{type:"Resource Guide",name:"Equity, Diversity, and Inclusion: A Resource Guide",meta:"American Mathematical Society · Providence, RI: AMS, 2021",desc:"Provides department-level strategies and advocacy for gender and LGBTQ+ equity in postsecondary math.",url:"https://ams.org"},
+{type:"Annual Report",name:"Women, Minorities, and Persons with Disabilities in Science and Engineering",meta:"NSF 23-315, NCSES, 2023",desc:"Annual report including data on gender identity, disability, and LGBTQ+ representation in higher ed math and STEM programs.",url:"https://nsf.gov"},
+{type:"Survey Findings",name:"STEM-Specific Findings from the 2021 National School Climate Survey",meta:"GLSEN, 2022",desc:"Documents school and college climate data for LGBTQ+ students, with recommendations for math/STEM inclusion.",url:"https://glsen.org"}],
+"Policy Trackers":[
+{type:"Policy Hub",name:"AWM LGBTQ+ Policies and Resources",meta:"Association for Women in Mathematics",desc:"Features live updates and policy positions on LGBTQ+ inclusion in math departments and university settings.",url:"https://awm-math.org"},
+{type:"Database",name:"Trans Policy Clearinghouse",meta:"Campus Pride",desc:"Centralized database tracking U.S. college policies for trans students, including name/pronoun changes relevant to math departments.",url:"https://campuspride.org"},
+{type:"State Tracker",name:"State Policy Tracker",meta:"Equality Federation",desc:"Monitors LGBTQ+ protections and anti-LGBTQ+ legislation across states, with implications for higher education math/STEM.",url:"https://equalityfederation.org"},
+{type:"Interactive Maps",name:"State Snapshots",meta:"GLSEN",desc:"Interactive maps tracking state-level LGBTQ+ inclusive or exclusionary education policies, applicable to postsecondary math.",url:"https://glsen.org"}],
+"Political & Social Organizations":[
+{type:"Professional Organization",name:"National Organization of Gay and Lesbian Scientists and Technical Professionals (NOGLSTP)",desc:"Advocates for LGBTQ+ inclusion in STEM, including mathematics, at the college and graduate levels.",url:"https://noglstp.org"},
+{type:"Nonprofit",name:"Campus Pride",desc:"Provides training, advocacy, and benchmarking for LGBTQ+ inclusion, supporting student groups and faculty allies in math/STEM.",url:"https://campuspride.org"},
+{type:"Professional Committee",name:"American Mathematical Society - Committee on Equity, Diversity, and Inclusion",desc:"Advises on diversity, gender, and LGBTQ+ inclusion efforts for the math discipline nationally.",url:"https://ams.org"},
+{type:"Graduate Student Community",name:"Queer Graduate Caucus (QGC) - Mathematical Association of America",desc:"Graduate student community supporting LGBTQ+ and intersectional inclusion in postsecondary math.",url:"https://maa.org"}],
+"Podcasts & Webinars":[
+{type:"Podcast Series",name:"Queer STEM Stories: Pride in STEM Podcast",meta:"Pride in STEM, ongoing",desc:"Podcast series highlighting LGBTQ+ people in STEM, including math faculty and students sharing their higher ed experiences.",url:"https://prideinstem.org"},
+{type:"Webinar Series",name:"AWM Webinar Series: Women, Nonbinary, and Trans Voices in Mathematics",meta:"Association for Women in Mathematics",desc:"Webinars amplifying the perspectives and advocacy of trans and nonbinary mathematicians in academia.",url:"https://awm-math.org"},
+{type:"Webinar Series",name:"AMS EDI Webinar: Identity, Advocacy, and Justice in Mathematics",meta:"American Mathematical Society",desc:"Webinar series on diversity, equity, and LGBTQ+ justice for students and faculty in postsecondary math.",url:"https://ams.org"},
+{type:"Webinar",name:"LGBTQ Best Practices: Classroom Culture and Curriculum",meta:"Learning for Justice",desc:"Webinar with guidance for inclusive classrooms, applicable to postsecondary math educators.",url:"https://learningforjustice.org"}],
+"Activist Groups & Campaigns":[
+{type:"OER Modules",name:"Association for Women in Mathematics - Inclusive Teaching Modules",desc:"Classroom modules and resources for gender and LGBTQ+ inclusion in postsecondary mathematics.",url:"https://awm-math.org"},
+{type:"Open-Access Graphing Activities",name:"Slow Reveal Graphs - LGBTQ Data Sets",desc:"Open-access graphing activities featuring LGBTQ-related statistics, used for discussion and inclusion in college math courses.",url:"https://slowrevealgraphs.com"},
+{type:"OER Guides",name:"GLSEN Curriculum Guides",desc:"Open-access guides for creating LGBTQ-inclusive curriculum, applicable to math and statistics classrooms.",url:"https://glsen.org"},
+{type:"Open Modules",name:"Harvard Data Science Review: Inclusive Data Science Curriculum",desc:"Open modules for teaching statistics and data science with a justice and inclusion lens.",url:"https://hdsr.mitpress.mit.edu"}],
+"Films, Documentaries & Visual Media":[
+{type:"TEDx Talk",name:"Being a Transgender Mathematician",meta:"Autumn Kent · TEDxCambridge, 2019",desc:"Talk by a trans woman mathematician about her journey and advocacy in higher mathematics.",url:"https://youtube.com"},
+{type:"Documentary",name:"Picture a Scientist",meta:"Directed by Sharon Shattuck & Ian Cheney · PBS NOVA, 2020",desc:"Documentary on women and nonbinary people in science and math, with stories about bias and resilience.",url:"https://picturescientist.com"},
+{type:"Film",name:"Not the Science Type",meta:"Directed by Julio Palacio · 3M/AAAS, 2021",desc:"Film highlighting women, nonbinary, and LGBTQ+ scientists and mathematicians breaking barriers.",url:"https://aaas.org"},
+{type:"YouTube Video",name:"Gender, Genius and the Myth of Meritocracy: Eugenia Cheng",meta:"Numberphile, 2018",desc:"Video discusses intersectional identity and diversity in the math world.",url:"https://youtube.com"}]},
+
+sped:{label:"Special Education",count:"Resources coming soon",
+"Recommended Readings":[],"News Articles & Substacks":[],"Policy Reports":[],"Policy Trackers":[],"Political & Social Organizations":[],"Podcasts & Webinars":[],"Open-Access Curricula & OER Repositories":[],"Activist Groups & Campaigns":[],"Films, Documentaries & Visual Media":[]}
+};
+
+let curGrade='cross',curCat=null;
+function buildSidebar(){
+  const sb=document.getElementById('sidebar');
+  const d=DATA[curGrade];
+  sb.innerHTML='<span class="sb-label">Categories</span>';
+  CATS.forEach(cat=>{
+    if(!d[cat]||d[cat].length===0)return;
+    const btn=document.createElement('button');
+    btn.className='sb-btn'+(curCat===cat?' active':'');
+    btn.textContent=cat;
+    btn.onclick=()=>{curCat=cat;render();};
+    sb.appendChild(btn);
+  });
+  const all=document.createElement('button');
+  all.className='sb-btn sb-all'+(!curCat?' active':'');
+  all.textContent='Show all categories';
+  all.onclick=()=>{curCat=null;render();};
+  sb.appendChild(all);
+}
+function buildCard(e){
+  const el=document.createElement('div');
+  el.className='card';
+  let h='<div class="card-type">'+e.type+'</div>';
+  h+='<div class="card-name">'+e.name+'</div>';
+  if(e.meta)h+='<div class="card-meta">'+e.meta+'</div>';
+  if(e.desc)h+='<div class="card-desc">'+e.desc+'</div>';
+  if(e.url)h+='<a class="card-link" href="'+e.url+'" target="_blank">Visit resource</a>';
+  el.innerHTML=h;
+  return el;
+}
+function render(){
+  const d=DATA[curGrade];
+  const allEmpty=CATS.every(cat=>!d[cat]||d[cat].length===0);
+  buildSidebar();
+  const area=document.getElementById('content');
+  area.innerHTML='';
+  const hdr=document.createElement('div');
+  hdr.className='content-hdr';
+  hdr.innerHTML='<h2>'+d.label+'</h2><p>'+d.count+'</p>';
+  area.appendChild(hdr);
+  if(allEmpty){
+    const msg=document.createElement('div');
+    msg.style.cssText='padding:3rem 0;font-size:14px;color:#aaa;font-style:italic';
+    msg.textContent='Resources for this section are coming soon.';
+    area.appendChild(msg);
+    return;
+  }
+  const toShow=curCat?[curCat]:CATS;
+  toShow.forEach(cat=>{
+    const entries=d[cat];
+    if(!entries||entries.length===0)return;
+    const block=document.createElement('div');
+    block.className='cat-block';
+    block.innerHTML='<div class="cat-title">'+cat+'</div>';
+    const grid=document.createElement('div');
+    grid.className='grid';
+    entries.forEach(e=>grid.appendChild(buildCard(e)));
+    block.appendChild(grid);
+    area.appendChild(block);
+  });
+}
+document.querySelectorAll('.gtab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.gtab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    curGrade=btn.dataset.g;
+    curCat=null;
+    render();
+  });
+});
+render();
+</script>
+</body>
+</html>
