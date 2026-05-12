@@ -46,6 +46,19 @@ body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:#f7f
 footer{background:#0D1B2A;padding:1.5rem 2.5rem}
 footer p{font-family:'Courier New',monospace;font-size:11px;color:#4a6a8a;letter-spacing:.05em}
 @media(max-width:680px){.sidebar{display:none}.hdr{padding:1.25rem 1rem 0}.content{padding:1.25rem 1rem 2rem}.grade-tabs{overflow-x:auto}.gtab{padding:10px 14px}}
+
+.search-bar{background:#1a5fa8;padding:10px 2.5rem;display:flex;align-items:center;gap:10px;border-top:1px solid #144d8a}
+.search-wrap{position:relative;flex:1;max-width:560px}
+.search-input{width:100%;padding:8px 12px 8px 36px;border:1px solid #144d8a;border-radius:6px;background:#0e3d70;color:#fff;font-family:'Courier New',monospace;font-size:12px;outline:none}
+.search-input::placeholder{color:rgba(255,255,255,.45)}
+.search-input:focus{border-color:#e8799e;background:#0a2d55}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.5);font-size:14px;pointer-events:none}
+.search-clear{background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-size:18px;padding:0 2px;line-height:1;display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%)}
+.search-clear.visible{display:block}
+.search-count{font-family:'Courier New',monospace;font-size:11px;color:rgba(255,255,255,.6);white-space:nowrap;min-width:90px}
+.search-grade-tag{font-family:'Courier New',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#e8799e;margin-bottom:2px}
+.no-results{padding:3rem 0;font-size:14px;color:#aaa;font-style:italic;text-align:center}
+mark{background:#fff3cd;color:#0D1B2A;border-radius:2px;padding:0 1px}
 </style>
 </head>
 <body>
@@ -71,6 +84,14 @@ footer p{font-family:'Courier New',monospace;font-size:11px;color:#4a6a8a;letter
     <button class="gtab" data-g="post">Postsecondary</button>
     <button class="gtab" data-g="sped">Special Education</button>
   </div>
+</div>
+<div class="search-bar">
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search all resources across all grade bands…" autocomplete="off">
+    <button class="search-clear" id="searchClear" title="Clear search">&#215;</button>
+  </div>
+  <span class="search-count" id="searchCount"></span>
 </div>
 <div class="layout">
   <nav class="sidebar" id="sidebar"></nav>
@@ -208,5 +229,141 @@ document.querySelectorAll('.gtab').forEach(btn=>{
 });
 render();
 </script>
+
+<script>
+// ── Search functionality ──────────────────────────────────────────────────────
+const GRADE_LABELS = {
+  cross: 'Cross-band', elem: 'Elementary', middle: 'Middle School',
+  high: 'High School', post: 'Postsecondary', sped: 'Special Education'
+};
+
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+const searchCount = document.getElementById('searchCount');
+
+let searchActive = false;
+
+function escapeRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function highlight(text, term){
+  if(!term) return text;
+  const re = new RegExp('(' + escapeRe(term) + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+function matchesQuery(entry, q){
+  const haystack = [entry.name||'', entry.desc||'', entry.meta||''].join(' ').toLowerCase();
+  return haystack.includes(q);
+}
+
+function buildSearchCard(entry, q){
+  const el = document.createElement('div');
+  el.className = 'card';
+  let h = '<div class="card-name">' + highlight(entry.name, q) + '</div>';
+  if(entry.meta) h += '<div class="card-meta">' + highlight(formatMLA(entry.meta), q) + '</div>';
+  if(entry.desc) h += '<div class="card-desc">' + highlight(entry.desc, q) + '</div>';
+  if(entry.url)  h += '<a class="card-link" href="' + entry.url + '" target="_blank">Visit resource</a>';
+  el.innerHTML = h;
+  return el;
+}
+
+function runSearch(q){
+  q = q.trim().toLowerCase();
+  const area = document.getElementById('content');
+  const sidebar = document.getElementById('sidebar');
+
+  if(!q){
+    // restore normal view
+    searchActive = false;
+    searchClear.classList.remove('visible');
+    searchCount.textContent = '';
+    sidebar.style.display = '';
+    // Re-enable grade tabs / sidebar buttons
+    document.querySelectorAll('.gtab').forEach(b => b.disabled = false);
+    render();
+    return;
+  }
+
+  searchActive = true;
+  searchClear.classList.add('visible');
+  sidebar.style.display = 'none';
+
+  // Collect all matches across all grades and categories
+  const results = [];
+  Object.entries(DATA).forEach(([grade, gdata]) => {
+    CATS.forEach(cat => {
+      const entries = gdata[cat];
+      if(!entries || !entries.length) return;
+      entries.forEach(entry => {
+        if(matchesQuery(entry, q)){
+          results.push({ entry, grade, cat });
+        }
+      });
+    });
+  });
+
+  area.innerHTML = '';
+
+  const hdr = document.createElement('div');
+  hdr.className = 'content-hdr';
+  hdr.innerHTML = '<h2>Search Results</h2><p>' + results.length + ' resource' + (results.length !== 1 ? 's' : '') + ' matching "' + q + '" across all grade bands</p>';
+  area.appendChild(hdr);
+  searchCount.textContent = results.length + ' result' + (results.length !== 1 ? 's' : '');
+
+  if(results.length === 0){
+    const msg = document.createElement('div');
+    msg.className = 'no-results';
+    msg.textContent = 'No resources matched "' + q + '". Try a different keyword.';
+    area.appendChild(msg);
+    return;
+  }
+
+  // Group by category for tidiness
+  const byCat = {};
+  results.forEach(r => {
+    const key = r.cat;
+    if(!byCat[key]) byCat[key] = [];
+    byCat[key].push(r);
+  });
+
+  CATS.forEach(cat => {
+    if(!byCat[cat] || !byCat[cat].length) return;
+    const block = document.createElement('div');
+    block.className = 'cat-block';
+    block.innerHTML = '<div class="cat-title">' + cat + ' <span style="font-size:10px;color:#aaa;font-style:italic">(' + byCat[cat].length + ')</span></div>';
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    byCat[cat].forEach(r => {
+      const card = buildSearchCard(r.entry, q);
+      // Add grade band tag to the top of the card
+      const gradeTag = document.createElement('div');
+      gradeTag.className = 'search-grade-tag';
+      gradeTag.textContent = GRADE_LABELS[r.grade] || r.grade;
+      card.insertBefore(gradeTag, card.firstChild);
+      grid.appendChild(card);
+    });
+    block.appendChild(grid);
+    area.appendChild(block);
+  });
+}
+
+// Debounce for live search
+let debounceTimer;
+searchInput.addEventListener('input', function(){
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => runSearch(this.value), 220);
+});
+
+searchInput.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){ this.value = ''; runSearch(''); }
+});
+
+searchClear.addEventListener('click', function(){
+  searchInput.value = '';
+  runSearch('');
+  searchInput.focus();
+});
+</script>
+
 </body>
 </html>
