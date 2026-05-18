@@ -437,8 +437,20 @@ document.getElementById('searchClear').addEventListener('click',function(){
 });
 
 // ── Init ─────────────────────────────────────────────────────────────────────
-buildGradeTabs();
-render();
+(function(){
+  const hashSubj = window.location.hash.replace('#','');
+  const startSubj = (hashSubj && SUBJECTS[hashSubj]) ? hashSubj : 'math';
+  curSubj = startSubj;
+  curGrade = SUBJECTS[startSubj].defaultGrade;
+  document.body.className = SUBJECTS[startSubj].bodyClass;
+  document.getElementById('subj-title').textContent = SUBJECTS[startSubj].title;
+  document.title = SUBJECTS[startSubj].title + ' Spotlight Toolkit';
+  document.querySelectorAll('.snav-btn[data-subj]').forEach(b => {
+    b.classList.toggle('active', b.dataset.subj === startSubj);
+  });
+  buildGradeTabs();
+  render();
+})();
 </script>
 </body>
 </html>
