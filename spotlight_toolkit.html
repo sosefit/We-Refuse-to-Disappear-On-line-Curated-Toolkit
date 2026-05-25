@@ -129,7 +129,7 @@ footer p{font-family:'Courier New',monospace;font-size:11px;color:#4a6a8a;letter
     <a class="snav-btn snav-home" href="https://sosefit.github.io/We-Refuse-to-Disappear-On-line-Curated-Toolkit/">&#8962; Home</a>
     <button class="snav-btn active" data-subj="math" onclick="switchSubject('math')">Mathematics</button>
     <button class="snav-btn" data-subj="ss" onclick="switchSubject('ss')">Social Studies</button>
-    <button class="snav-btn disabled-subj" title="Coming soon">English Language Arts</button>
+    <a class="snav-btn" href="ela_toolkit-2-3.html">English Language Arts</a>
     <button class="snav-btn disabled-subj" title="Coming soon">Physical Education</button>
     <button class="snav-btn disabled-subj" title="Coming soon">Theater &amp; Visual Arts</button>
     <button class="snav-btn disabled-subj" title="Coming soon">Science</button>
@@ -163,9 +163,9 @@ const SUBJECTS = {
   math: {
     title: 'Mathematics',
     bodyClass: 'subj-math',
-    grades: ['cross','elem','middle','high','post','sped'],
+    grades: ['cross','elem','middle','high','post'],
     defaultGrade: 'cross',
-    gradeLabels: {cross:'Cross-band',elem:'Elementary',middle:'Middle School',high:'High School',post:'Postsecondary',sped:'Special Education'},
+    gradeLabels: {cross:'Cross-band',elem:'Elementary',middle:'Middle School',high:'High School',post:'Postsecondary'},
   },
   ss: {
     title: 'Social Studies',
