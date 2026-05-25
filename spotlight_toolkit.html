@@ -463,7 +463,12 @@ document.getElementById('searchClear').addEventListener('click',function(){
   runSearch('');
   document.getElementById('searchInput').focus();
 });
-
+// Add click listeners to subject nav buttons
+document.querySelectorAll('.snav-btn[data-subj]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchSubject(btn.dataset.subj);
+  });
+});
 // ── Init ─────────────────────────────────────────────────────────────────────
 (function(){
   const hashSubj = window.location.hash.replace('#','');
