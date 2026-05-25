@@ -139,12 +139,12 @@ footer p{font-family:'Courier New',monospace;font-size:11px;color:#4a6a8a;letter
 <div class="hdr" id="hdr">
   <div class="hdr-eyebrow">Spotlight Toolkit</div>
   <h1 id="subj-title">Mathematics</h1>
-  <div class="subject-nav">
-    <a class="snav-btn snav-home" href="https://sosefit.github.io/We-Refuse-to-Disappear-On-line-Curated-Toolkit/">&#8962; Home</a>
-    <button class="snav-btn" data-subj="math">Mathematics</button>
-    <button class="snav-btn" data-subj="ss">Social Studies</button>
-    <button class="snav-btn" data-subj="ela">English Language Arts</button>
-    <button class="snav-btn" data-subj="science">Science</button>
+  <nav class="subject-tabs">
+  <a href="#ela">ELA</a>
+  <a href="#math">Math</a>
+  <a href="#science">Science</a>
+  <a href="#socialstudies">Social Studies</a>
+</nav>
     <button class="snav-btn disabled-subj" title="Coming soon">Physical Education</button>
     <button class="snav-btn disabled-subj" title="Coming soon">Theater &amp; Visual Arts</button>
     <button class="snav-btn disabled-subj" title="Coming soon">Health Education</button>
@@ -174,28 +174,28 @@ footer p{font-family:'Courier New',monospace;font-size:11px;color:#4a6a8a;letter
 <script>
 // ── Subject configuration ────────────────────────────────────────────────────
 const SUBJECTS = {
-  math: {
+  <section id="math">
     title: 'Mathematics',
     bodyClass: 'subj-math',
     grades: ['cross','elem','middle','high','post','sped'],
     defaultGrade: 'cross',
     gradeLabels: {cross:'Cross-band',elem:'Elementary',middle:'Middle School',high:'High School',post:'Postsecondary',sped:'Special Education'},
   },
-  ss: {
+ <section id="socialstudies">
     title: 'Social Studies',
     bodyClass: 'subj-ss',
     grades: ['elem','middle','high','post'],
     defaultGrade: 'elem',
     gradeLabels: {elem:'Elementary',middle:'Middle School',high:'High School',post:'Postsecondary'},
   },
-  ela: {
+ <section id="ela">
     title: 'English Language Arts',
     bodyClass: 'subj-ela',
     grades: ['elem','middle','high','post','cross'],
     defaultGrade: 'elem',
     gradeLabels: {elem:'Elementary',middle:'Middle School',high:'High School',post:'Postsecondary',cross:'Cross-Band Resources'},
   },
-  science: {
+ <section id="science">
     title: 'Science',
     bodyClass: 'subj-science',
     grades: ['elem','middle','high','post','cross'],
