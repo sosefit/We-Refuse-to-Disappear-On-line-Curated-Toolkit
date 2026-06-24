@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sosefit.github.io/We-Refuse-to-Disappear-On-line-Curated-Toolkit/sitemap.xml
