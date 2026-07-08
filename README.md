@@ -1,20 +1,32 @@
+![We Refuse to Disappear Book Cover](High%20Res%20Cover.jpg)
+
 # Trans Education Toolkit
 
-## We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy
+### Companion Resource Library for
 
-The **Trans Education Toolkit** is a curated resource library accompanying the book *We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy* (Harvard Education Press).
+## *We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy*
 
-The toolkit brings together carefully selected resources for educators, researchers, advocates, administrators, families, and community members committed to creating affirming educational environments for transgender and nonbinary students.
+**Published by Harvard Education Press**
 
-## Visit the Toolkit
+---
 
-🌐 **Live Website**
+## Live Website
 
-https://transeducationtoolkit.com
+🌐 **https://transeducationtoolkit.com**
 
-## Contents
+---
 
-The toolkit includes curated resources in:
+## About the Project
+
+The **Trans Education Toolkit** is a curated, continuously updated resource library developed to accompany *We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy* (Harvard Education Press).
+
+The toolkit is designed to support educators, teacher educators, researchers, school leaders, policymakers, students, families, advocates, and community organizations committed to creating affirming educational environments for transgender and nonbinary students. Resources are selected to help readers deepen their understanding of contemporary scholarship, educational practice, policy, activism, and curriculum across multiple disciplines.
+
+---
+
+## Explore the Toolkit
+
+Resources are organized by subject area and include:
 
 - English Language Arts
 - Health Education
@@ -25,40 +37,58 @@ The toolkit includes curated resources in:
 - Theatre & Visual Arts
 - Special Education
 
-Resources include:
+Each section contains carefully curated collections of:
 
 - Recommended Readings
-- News Articles & Substacks
+- News Articles & Independent Journalism
 - Policy Reports
-- Policy Trackers
+- Legislative & Policy Trackers
 - Political & Social Organizations
 - Activist Groups & Campaigns
 - Podcasts & Webinars
 - Open Educational Resources (OER)
-- Films & Documentaries
+- Films, Documentaries & Visual Media
+
+The toolkit is updated regularly as new scholarship, legislation, and educational resources become available.
+
+---
+
+## About the Book
+
+*We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy* examines how educators continue to create affirming learning environments amid rapidly changing educational policy landscapes. The accompanying toolkit extends the book by providing direct access to current research, policy resources, organizations, curricular materials, and multimedia resources referenced throughout the text.
+
+---
 
 ## Authors
 
-**Dr. sj Miller**
+**sj Miller, Ph.D.**
 
 Professor of Teacher Education
 
-Author of *We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy*
+Author, *We Refuse to Disappear: Resistance Amid Anti-Trans Education Policy*
 
 Published by Harvard Education Press
 
-## Resource Review
+---
 
-Resources reviewed and fact-checked by:
+## Resource Review & Fact Checking
 
-**Dr. Tiffany Karalis Noel**
+Resources reviewed and fact-checked by
+
+**Tiffany Karalis Noel, Ph.D.**
+
+---
 
 ## Citation
 
-If you reference this toolkit, please cite:
+If you reference this toolkit in publications, presentations, or educational materials, please cite:
 
-Miller, sj. *Trans Education Toolkit*. https://transeducationtoolkit.com
+> Miller, sj. (2026). *Trans Education Toolkit*. https://transeducationtoolkit.com
+
+---
 
 ## License
 
-Please respect all copyrights associated with linked resources. This repository contains links and original organizational materials created for educational purposes.
+This repository contains original organizational materials created for the **Trans Education Toolkit** together with links to publicly available resources. Copyright for linked materials remains with their respective authors, publishers, and organizations.
+
+© 2026 sj Miller. All rights reserved.
